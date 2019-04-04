@@ -101,7 +101,10 @@ export default class Instagram extends Component {
         {...this.props}
         key={key}
         style={[styles.webView, this.props.styles.webView]}
-        source={{ uri: `https://api.instagram.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=${responseType}&scope=${scopes.join('+')}` }}
+        source={{
+          uri: `https://api.instagram.com/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUrl}&response_type=${responseType}&scope=${scopes.join('+')}`,
+          headers: {'accept-language': 'en-US,en;q=0.9'}
+        }}
         // scalesPageToFit
         startInLoadingState
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
