@@ -49,7 +49,8 @@ export default class Instagram extends Component {
     if (webViewState.title === 'Instagram' && webViewState.url === 'https://www.instagram.com/') {
       this.setState({ key: key + 1 })
     }
-    if (url && url.startsWith(this.props.redirectUrl)) {
+
+    if (url && (url.startsWith(this.props.redirectUrl) || url.startsWith(this.props.redirectAdditionalUrl))) {
       const match = url.match(/(#|\?)(.*)/)
       const results = qs.parse(match[2])
       this.hide()
@@ -145,6 +146,7 @@ export default class Instagram extends Component {
 const propTypes = {
   clientId: PropTypes.string.isRequired,
   redirectUrl: PropTypes.string,
+  redirectAdditionalUrl: PropTypes.string,
   scopes: PropTypes.array,
   onLoginSuccess: PropTypes.func,
   modalVisible: PropTypes.bool,
@@ -157,6 +159,7 @@ const propTypes = {
 
 const defaultProps = {
   redirectUrl: 'https://google.com',
+  redirectAdditionalUrl: 'https://google.com',
   styles: {},
   scopes: ['public_content'],
   onLoginSuccess: (token) => {
@@ -199,7 +202,6 @@ const styles = StyleSheet.create({
     top: 35,
     right: 5,
     backgroundColor: '#000',
-    borderRadius: 12,
     borderWidth: 2,
     borderColor: 'rgba(0, 0, 0, 0.4)',
     width: 30,
