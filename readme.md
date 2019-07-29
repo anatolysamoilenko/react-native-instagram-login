@@ -10,6 +10,7 @@
 
 ```js
 npm install react-native-instagram-login --save
+npm install react-native-webview --save
 ```
 
 ```js
