@@ -8,12 +8,11 @@ import {
   Modal,
   Dimensions,
   TouchableOpacity,
-  WebView,
   Image
 } from 'react-native'
 import qs from 'qs'
-// import { WebView } from "react-native-webview";
-const { width, height } = Dimensions.get('window')
+import { WebView } from "react-native-webview";
+const { width, height } = Dimensions.get('window');
 
 const patchPostMessageJsCode = `(${String(function () {
   var originalPostMessage = window.postMessage
