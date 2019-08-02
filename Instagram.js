@@ -99,6 +99,7 @@ export default class Instagram extends Component {
     return (
       <WebView
         {...this.props}
+        useWebKit={false}
         key={key}
         style={[styles.webView, this.props.styles.webView]}
         source={{
